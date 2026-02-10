@@ -1,0 +1,130 @@
+
+---
+title: "My Data Visualization Portfolio"
+format:
+html:
+output-file: index.html
+execute:
+echo: true
+eval: true
+---
+---
+title: "My Data Visualization Portfolio"
+format: 
+  html:
+    output-file: index.html
+execute:
+  echo: true
+  eval: true
+---
+
+# Welcome to My Portfolio! 📊
+
+Hello! My nickname is [Dija]. This is my Quarto data visualization portfolio showcasing my Python and matplotlib skills.
+
+## About This Portfolio
+
+This portfolio demonstrates how Quarto can seamlessly integrate Python code and visualizations into professional documents. Each chart below is created using matplotlib and embedded directly into this document.
+
+## What is Matplotlib?
+
+**Matplotlib** is a widely used Python library for creating static, animated, and interactive visualizations. It was designed to bring publication-quality plotting to Python in a way that feels familiar to users of MATLAB or other scientific plotting tools.
+
+### Why is it useful?
+
+- **Flexible and powerful** — You can build almost any kind of chart: line plots, scatter plots, bar charts, histograms, heatmaps, and more, with fine control over colors, labels, and layout.
+- **Integrates with Python** — It works seamlessly with NumPy, pandas, and the rest of the scientific Python stack, so you can visualize data from the same environment where you analyze it.
+- **Publication-ready** — Plots can be exported in high resolution (PNG, PDF, SVG) and customized to match journal or report style guidelines.
+- **Widely adopted** — Matplotlib is the foundation for many other plotting libraries (e.g. Seaborn, Pandas plotting) and is a standard tool in data science and research.
+
+The charts in this portfolio use matplotlib to turn data into clear, informative graphics.
+
+## Simple Line Chart
+
+Let's create a simple line chart showing some sample data:
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create sample data
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Create the plot
+plt.figure(figsize=(7, 4.75))
+plt.plot(x, y, 'b-', linewidth=2, label='sin(x)')
+plt.xlabel('X values')
+plt.ylabel('Y values')
+plt.title('My First Matplotlib Chart')
+plt.grid(True, alpha=0.3)
+plt.legend()
+plt.show()
+```
+
+## Bar Chart Example
+
+Here's a bar chart showing some sample data:
+
+```{python}
+# Sample data for bar chart
+categories = ['A', 'B', 'C', 'D', 'E']
+values = [23, 45, 56, 78, 32]
+
+plt.figure(figsize=(7, 4.75))
+bars = plt.bar(categories, values, color=['red', 'green', 'blue', 'orange', 'purple'])
+plt.xlabel('Categories')
+plt.ylabel('Values')
+plt.title('Sample Bar Chart')
+
+# Add value labels on bars
+for bar, value in zip(bars, values):
+    plt.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1, 
+             str(value), ha='center', va='bottom')
+
+plt.show()
+```
+
+## Scatter Plot Example
+
+Here's a scatter plot with random data points:
+
+```{python}
+# Generate random data
+np.random.seed(42)
+n_points = 80
+x = np.random.randn(n_points)
+y = 2 * x + np.random.randn(n_points) * 0.8
+
+plt.figure(figsize=(7, 4.75))
+plt.scatter(x, y, alpha=0.6, c=np.arange(n_points), cmap='viridis', s=50)
+plt.xlabel('X values')
+plt.ylabel('Y values')
+plt.title('Random Data Scatter Plot')
+plt.colorbar(label='Point index')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+## Pie Chart Example
+
+Here's a pie chart with sample data:
+
+```{python}
+# Sample data for pie chart
+labels = ['Apples', 'Bananas', 'Oranges', 'Berries', 'Other']
+sizes = [30, 25, 20, 15, 10]
+colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#ff99cc']
+explode = (0.05, 0, 0, 0, 0)  # Slightly separate the largest slice
+
+plt.figure(figsize=(7, 4.75))
+plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+plt.title('Sample Fruit Distribution')
+plt.axis('equal')
+plt.show()
+```
+
+## Conclusion
+
+This demonstrates how Quarto can seamlessly integrate Python code and visualizations into professional documents that can be hosted publicly on GitHub Pages!
